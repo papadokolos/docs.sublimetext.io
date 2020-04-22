@@ -74,7 +74,7 @@ const config = {
                     children: [
                         'search-and-replace/',
                         'search-and-replace/single.md',
-                        'search-and-replace/multiple.md,'
+                        'search-and-replace/multiple.md'
                     ],
                 },
                 {
