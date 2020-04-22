@@ -2,18 +2,16 @@
 title: Commands
 ---
 
-## Overview
-
-<!-- Description named actions, used everywhere, take json arguments -->
-
+::: tip Note
 This list of commands is a work in progress.
+:::
 
 <!-- TODO Remove after full ReST to MD Conversion
 - .. _cmd-about-paths: -->
 
-[About Paths in Command Arguments]: #about-paths-in-command-arguments
 
 ## About Paths in Command Arguments
+[About Paths in Command Arguments]: #about-paths-in-command-arguments
 
 Some commands take paths as parameters. Among these, some support snippet-like
 syntax, while others don't. A command of the first kind would take a parameter
@@ -23,41 +21,37 @@ would take a parameter like `Packages/SomeDir/SomeFile.ext`.
 Generally, newer commands support the snippet-like syntax.
 
 Commands expect UNIX-style paths if not otherwise noted, including on
-Windows (for example, `/c/Program Files/Sublime Text 2/sublime_plugin.py`).
+Windows (for example, `/c/Program Files/Sublime Text 3/sublime_plugin.py`).
 
 Often, relative paths in arguments to commands are assumed to start at the
-`Data` directory.
+:Data_directory:.
+
 
 ### Variables in Paths as Arguments
 
 The same variables available to build systems are expanded in arguments to
 commands. See [Build System Variables][] for more information.
 
-[Build System Variables]: build_systems.html#build-system-variables
+[Build System Variables]: ./build_systems.md#build-system-variables
 
 <!--  TODO: split into Window and Text (and Application) commands since they behave
 - differently and require other call mechanisms when called from a plugin -->
 
-<!-- TODO Remove after full ReST to MD Conversion
-- .. _cmd-list: -->
 
 ## Commands
 
-<!-- Description: py:currentmodule:: sublime -->
-<!-- TODO This list is incomplete. -->
-
 `build`
 : Runs a build system.
-	- **variant** [String]: Optional. The name of the variant to be run.
+  - **variant** [String]: Optional. The name of the variant to be run.
 
 `set_build_system`
 : Changes the current build system.
 
-	- **file** [String]: Path to the build system. If empty, Sublime Text tries
-	  to automatically find an appropriate build systems from specified
-	  selectors.
-	- **index** [Int]: Used in the **Tools | Build System** menu but otherwise
-	  probably not useful.
+  - **file** [String]: Path to the build system. If empty, Sublime Text tries
+    to automatically find an appropriate build systems from specified
+    selectors.
+  - **index** [Int]: Used in the **Tools | Build System** menu but otherwise
+    probably not useful.
 
 `new_build_system`
 : Creates a new buffer and inserts a build system template.
@@ -69,15 +63,15 @@ commands. See [Build System Variables][] for more information.
 `run_macro_file`
 : Runs a *.sublime-macro* file.
 
-	- **file** [String]: Relative path to the macro file.
+  - **file** [String]: Relative path to the macro file.
 
 `insert_snippet`
 : Inserts a snippet from a string or *.sublime-snippet* file.
 
-	- **contents** [String]: Snippet as a string to be inserted. Remember that
-	  backslashes `\` have to be escaped, like in every other JSON string.
-	- **name** [String]: Relative [About Paths in Command Arguments][] to the
-	  *.sublime-snippet* file to be inserted.
+  - **contents** [String]: Snippet as a string to be inserted. Remember that
+    backslashes `\` have to be escaped, like in every other JSON string.
+  - **name** [String]: [Relative path][About Paths in Command Arguments] to the
+    *.sublime-snippet* file to be inserted.
 
 ::: seealso
 [Snippets][]
@@ -89,32 +83,32 @@ commands. See [Build System Variables][] for more information.
 `insert`
 : Inserts a string.
 
-	- **caracters** [String]: String to be inserted.
+  - **caracters** [String]: String to be inserted.
 
 `append`
 : Inserts a string at the end of the view.
 
-	- **characters** [String]: String to be inserted.
-	- **force** [Bool]:
-	- **scroll_to_end** [Bool]:
+  - **characters** [String]: String to be inserted.
+  - **force** [Bool]:
+  - **scroll_to_end** [Bool]:
 
 `move`
 : Advances the caret by predefined units.
 
-	- **by** [Enum]: Values: *characters*, *words*, *word_ends*, *subwords*,
-		  *subword_ends*, *lines*, *pages*, *stops*.
-	- **forward** [Bool]: Whether to advance or reverse in the buffer.
-	- **word_begin** [Bool]
-	- **empty_line** [Bool]
-	- **punct_begin** [Bool]
-	- **separators** [Bool]
-	- **extend** [Bool]: Whether to extend the selection. Defaults to `false`.
+  - **by** [Enum]: Values: *characters*, *words*, *word_ends*, *subwords*,
+      *subword_ends*, *lines*, *pages*, *stops*.
+  - **forward** [Bool]: Whether to advance or reverse in the buffer.
+  - **word_begin** [Bool]
+  - **empty_line** [Bool]
+  - **punct_begin** [Bool]
+  - **separators** [Bool]
+  - **extend** [Bool]: Whether to extend the selection. Defaults to `false`.
 
 `move_to`
 : Advances the caret to predefined locations.
 
-	- **to** [Enum]: Values: *bol*, *eol*, *bof*, *eof*, *brackets*.
-	- **extend** [Bool]: Whether to extend the selection. Defaults to `false`.
+  - **to** [Enum]: Values: *bol*, *eol*, *bof*, *eof*, *brackets*.
+  - **extend** [Bool]: Whether to extend the selection. Defaults to `false`.
 
 `open_file`
 : Opens the specified file.
@@ -122,20 +116,20 @@ commands. See [Build System Variables][] for more information.
   from [sublime-package archives][] as read-only
   if the specified *override file* does not exist.
 
-	- **file** [String]: Absolute or relative [About Paths in Command Arguments][]
-	  to the file to be opened. Relative paths will originate from the recently
+  - **file** [String]: [Absolute or relative path][About Paths in Command Arguments]
+    to the file to be opened. Relative paths will originate from the recently
 
-	  Expands snippet-like variables, such as `$platform` and `$packages`.
+    Expands snippet-like variables, such as `$platform` and `$packages`.
 
-	- **contents** [String]: This string will be written to the new buffer if
-	  the file does not exist. accessed directory (e.g. the directory of the currently opened file).
+  - **contents** [String]: This string will be written to the new buffer if
+    the file does not exist. accessed directory (e.g. the directory of the currently opened file).
 
-	  .. XXX more variables?
+    .. XXX more variables?
 
 `open_dir`
 : Opens the specified directory with the default file manager.
 
-	- **dir** [String]: The directory to open.
+  - **dir** [String]: The directory to open.
 
 `open_file_settings`
 : Opens the syntax-specific user settings file for the current syntax.
@@ -149,8 +143,8 @@ commands. See [Build System Variables][] for more information.
 `switch_file`
 : Switches between two files with the same name and different extensions.
 
-	- **extensions** [String]: Extensions (without leading dot) for which
-	  switching will be enabled.
+  - **extensions** [String]: Extensions (without leading dot) for which
+    switching will be enabled.
 
 `close`
 : Closes the active view.
@@ -169,7 +163,7 @@ commands. See [Build System Variables][] for more information.
 `save`
 : Saves the active file.
 
-	- **encoding** [String]: The file encoding to save as.
+  - **encoding** [String]: The file encoding to save as.
 
 `save_all`
 : Saves all open files.
@@ -252,8 +246,8 @@ commands. See [Build System Variables][] for more information.
 `paste`
 : Inserts the clipboard contents after the caret.
 
-	- **clipboard** [String]: May be *selection*. XXX what other values are
-	  allowed?
+  - **clipboard** [String]: May be *selection*. XXX what other values are
+    allowed?
 
 `paste_and_indent`
 : Inserts the clipboard contents after the caret and indents contextually.
@@ -261,8 +255,8 @@ commands. See [Build System Variables][] for more information.
 `select_lines`
 : Adds a line to the current selection.
 
-	- **forward** [Bool]: Whether to add the next or previous line. Defaults to
-	  `true`.
+  - **forward** [Bool]: Whether to add the next or previous line. Defaults to
+    `true`.
 
 `scroll_lines`
 : Scrolls lines in the view.
@@ -299,8 +293,8 @@ commands. See [Build System Variables][] for more information.
 `hide_panel`
 : Hides the active panel.
 
-	- **cancel** [Bool]: Notifies the panel to restore the selection to what it
-	  was when the panel was opened. (Only incremental find panel.)
+  - **cancel** [Bool]: Notifies the panel to restore the selection to what it
+    was when the panel was opened. (Only incremental find panel.)
 
 `hide_overlay`
 : Hides the active overlay. Show the overlay using the show_overlay command.
@@ -312,10 +306,10 @@ commands. See [Build System Variables][] for more information.
 : Inserts the best completion that can be inferred from the current context.
 <!-- TODO Probably useless. XXX -->
 
-	- **default** [String]: String to insert failing a best completion.
+  - **default** [String]: String to insert failing a best completion.
 
 `replace_completion_with_next_completion`
-	<!-- TODO Useless for users. XXX -->
+  <!-- TODO Useless for users. XXX -->
 
 `reindent`
 : Corrects indentation of the selection with regular expressions set in the
@@ -350,8 +344,8 @@ commands. See [Build System Variables][] for more information.
 `expand_selection`
 : Extends the selection up to predefined limits.
 
-	- **to** [Enum]: Values: *bol*, *hardbol*, *eol*, *hardeol*, *bof*, *eof*,
-	  *brackets*, *line*, *tag*, *scope*, *indentation*.
+  - **to** [Enum]: Values: *bol*, *hardbol*, *eol*, *hardeol*, *bof*, *eof*,
+    *brackets*, *line*, *tag*, *scope*, *indentation*.
 
 `close_tag`
 : Surrounds the current inner text with the appropiate tags.
@@ -368,23 +362,24 @@ commands. See [Build System Variables][] for more information.
 `show_overlay`
 : Shows the requested overlay. Use the #### hide_overlay command to hide it.
 
-	- **overlay** [Enum]:
-		The type of overlay to show. Possible values:
+  - **overlay** [Enum]:
+    The type of overlay to show. Possible values:
 
-		- *goto*: Show the [Goto Anything][] overlay.
-		- *command_palette*: Show the :doc:`../extensibility/command_palette`.
+    - *goto*: Show the [Goto Anything][] overlay.
+    - *command_palette*: Show the [Command Palette][].
 
-	- **show_files** [Bool]: If using the goto overlay, start by displaying
-	  files rather than an empty widget.
-	- **text** [String]: The initial contents to put in the overlay.
+  - **show_files** [Bool]: If using the goto overlay, start by displaying
+    files rather than an empty widget.
+  - **text** [String]: The initial contents to put in the overlay.
+
 
 `show_panel`
 : Shows a panel.
 
-	- **panel** [Enum]: Values: *incremental_find*, *find*, *replace*,
-	  *find_in_files*, *console* or *output.<panel_name>*.
-	- **reverse** [Bool]: Whether to search backwards in the buffer.
-	- **toggle** [Bool]: Whether to hide the panel if it's already visible.
+  - **panel** [Enum]: Values: *incremental_find*, *find*, *replace*,
+    *find_in_files*, *console* or *output.\<panel_name\>*.
+  - **reverse** [Bool]: Whether to search backwards in the buffer.
+  - **toggle** [Bool]: Whether to hide the panel if it's already visible.
 
 `find_next`
 : Finds the next occurrence of the current search term.
@@ -426,18 +421,18 @@ commands. See [Build System Variables][] for more information.
 `toggle_setting`
 : Toggles the value of a boolean setting. This value is view-specific.
 
-	- **setting** [String]: The name of the setting to be toggled.
+  - **setting** [String]: The name of the setting to be toggled.
 
 `set_setting`
 : Set the value of a setting. This value is view-specific.
 
-	- **setting** [String]: The name of the setting to changed.
-	- **value** [*]: The value to set to.
+  - **setting** [String]: The name of the setting to changed.
+  - **value** [*]: The value to set to.
 
 `set_line_ending`
 : Changes the line endings of the current file.
 
-	- **type** [Enum]: *windows*, *unix*, *cr*
+  - **type** [Enum]: *windows*, *unix*, *cr*
 
 `next_misspelling`
 : Advance to the next misspelling
@@ -454,7 +449,7 @@ commands. See [Build System Variables][] for more information.
 `toggle_comment`
 : Comments or uncomments the active lines, if available.
 
-	- **block** [Bool]: Whether to insert a block comment.
+  - **block** [Bool]: Whether to insert a block comment.
 
 `join_lines`
 : Joins the current line with the next one.
@@ -480,30 +475,30 @@ commands. See [Build System Variables][] for more information.
   care of by Sublime Text internally so they list below only contains
   parameters accepted by this command.
 
-	- **cmd** [[String]]
-	- **shell_cmd** [String]: Shell command to use. If given overrides
-	  `cmd` and ignores `shell`.
-	- **file_regex** [String]
-	- **line_regex** [String]
-	- **working_dir** [String]
-	- **encoding** [String]
-	- **env** [{String: String}]
-	- **quiet** [Bool]: If `True` no runtime information is printed if the
-	  command fails or has a non-zero exit code.
-	- **kill** [Bool]: If `True` will simply terminate the current build
-	  process. This is invoked via *Build: Cancel* command from the
-	  [Command Palette][].
-	- **update_phantoms_only** [Bool]
-	- **hide_phantoms_only** [Bool]
-	- **word_wrap** [Bool]: Whether to word-wrap the output in the build panel
-	- **syntax** [String]: Syntax file used to colour output.
-	- **path** [String]
-		- **shell** [Bool]
+  - **cmd** [[String]]
+  - **shell_cmd** [String]: Shell command to use. If given overrides
+    `cmd` and ignores `shell`.
+  - **file_regex** [String]
+  - **line_regex** [String]
+  - **working_dir** [String]
+  - **encoding** [String]
+  - **env** [{String: String}]
+  - **quiet** [Bool]: If `True` no runtime information is printed if the
+    command fails or has a non-zero exit code.
+  - **kill** [Bool]: If `True` will simply terminate the current build
+    process. This is invoked via *Build: Cancel* command from the
+    [Command Palette][].
+  - **update_phantoms_only** [Bool]
+  - **hide_phantoms_only** [Bool]
+  - **word_wrap** [Bool]: Whether to word-wrap the output in the build panel
+  - **syntax** [String]: Syntax file used to colour output.
+  - **path** [String]
+    - **shell** [Bool]
 
-::: seealso
-[Arbitrary Options for build systems][]
-: Detailed documentation on all other available options.
-:::
+  ::: seealso
+  [`exec` Target options](https://www.sublimetext.com/docs/3/build_systems.html#exec_options)
+  : Detailed documentation on all parameters of the `exec` command.
+  :::
 
 `transpose`
 : Makes selections or characters swap places.
@@ -515,43 +510,43 @@ commands. See [Build System Variables][] for more information.
 `sort_lines`
 : Sorts lines.
 
-	- **case_sensitive** [Bool]: Whether the sort should be case sensitive.
+  - **case_sensitive** [Bool]: Whether the sort should be case sensitive.
 
 `sort_selection`
 : Sorts lines in selection.
 
-	- **case_sensitive** [Bool]: Whether the sort should be case sensitive.
+  - **case_sensitive** [Bool]: Whether the sort should be case sensitive.
 
 `permute_lines`
 : XXX
 
-	- **operation** [Enum]: *reverse*, *unique*, *shuffle* ...?
+  - **operation** [Enum]: *reverse*, *unique*, *shuffle* ...?
 
 `permute_selection`
 : XXX
 
-	- **operation** [Enum]: *reverse*, *unique*, *shuffle* ...?
+  - **operation** [Enum]: *reverse*, *unique*, *shuffle* ...?
 
 `set_layout`
 : Changes the group layout of the current window. This command uses the same
-  pattern as :py:meth:`Window.set_layout`, see there for a list and
+  pattern as [`Window.set_layout`][], see there for a list and
   explanation of parameters.
 
 `focus_group`
 : Gives focus to the top-most file in the specified group.
 
-	- **group** [Int]: The group index to focus. This is determined by the order
-	  of `cells` items from the current layout (see :py:meth:`Window.set_layout`).
+  - **group** [Int]: The group index to focus. This is determined by the order
+    of `cells` items from the current layout (see [`Window.set_layout`][]).
 
 `move_to_group`
 : Moves the current file to the specified group.
 
-	- **group** [Int]: The group index to focus. See #### focus_group command.
+  - **group** [Int]: The group index to focus. See #### focus_group command.
 
 `select_by_index`
 : Focuses a certain tab in the current group.
 
-	- **index** [Int]: The tab index to focus.
+  - **index** [Int]: The tab index to focus.
 
 `next_bookmark`
 : Select the next bookmarked region.
@@ -566,7 +561,7 @@ commands. See [Build System Variables][] for more information.
 `select_bookmark`
 : Selects a bookmarked region in the current file.
 
-	- **index** [Int]
+  - **index** [Int]
 
 `clear_bookmarks`
 : Removes all bookmarks.
@@ -577,7 +572,7 @@ commands. See [Build System Variables][] for more information.
 `wrap_lines`
 : Wraps lines. By default, it wraps lines at the first ruler's column.
 
-	- **width** [Int]: Specifies the column at which lines should be wrapped.
+  - **width** [Int]: Specifies the column at which lines should be wrapped.
 
 `upper_case`
 : Makes the selection upper case.
@@ -625,7 +620,7 @@ commands. See [Build System Variables][] for more information.
    the **name** "mark" is specified as an argument, it removes all marks set
    in the current file, but not the bookmarks.
 
-	- **name** [String]: e.g. `"mark"`, `"bookmarks"`.
+  - **name** [String]: e.g. `"mark"`, `"bookmarks"`.
 
 `yank`
 : XXX
@@ -660,12 +655,12 @@ commands. See [Build System Variables][] for more information.
   fold by level 2 and then by 3, for example. Sections with cursors are not
   folded.
 
-	- **level** [Int]: The level of indentation that should be folded. `0` is
-	  equivalent to running #### unfold_all.
+  - **level** [Int]: The level of indentation that should be folded. `0` is
+    equivalent to running #### unfold_all.
 
 `fold_tag_attributes`
-	Folds all tag attributes in XML files, only leaving the tag's name and the
-	closing bracket visible.
+  Folds all tag attributes in XML files, only leaving the tag's name and the
+  closing bracket visible.
 
 `unfold_all`
 : Unfolds all folded regions.
@@ -676,17 +671,17 @@ commands. See [Build System Variables][] for more information.
 `open_recent_file`
 : Opens a recently closed file.
 
-	- **index** [Int]
+  - **index** [Int]
 
 `open_recent_folder`
 : Opens a recently closed folder.
 
-	- **index** [Int]
+  - **index** [Int]
 
 `open_recent_project`
 : Opens a recently closed project.
 
-	- **index** [Int]
+  - **index** [Int]
 
 `clear_recent_files`
 : Deletes records of recently accessed files and folders.
@@ -697,7 +692,7 @@ commands. See [Build System Variables][] for more information.
 `reopen`
 : Reopens the current file.
 
-	- **encoding** [String]: The file encoding the file should be reopened with.
+  - **encoding** [String]: The file encoding the file should be reopened with.
 
 `clone_file`
 : Clones the current view into the same tab group, both sharing the same
@@ -710,12 +705,12 @@ commands. See [Build System Variables][] for more information.
 `expand_tabs`
 : XXX
 
-	- **set_translate_tabs** [Bool]
+  - **set_translate_tabs** [Bool]
 
 `unexpand_tabs`
 : XXX
 
-	- **set_translate_tabs** [Bool]
+  - **set_translate_tabs** [Bool]
 
 `new_plugin`
 : Creates a new buffer and inserts a plugin template (a text command).
@@ -726,7 +721,7 @@ commands. See [Build System Variables][] for more information.
 `open_url`
 : Opens the specified url with the default browser.
 
-	- **url** [String]
+  - **url** [String]
 
 `show_about_window`
 : I think you know what this does.
@@ -741,34 +736,33 @@ There are several ways to discover a command's name in order to use it as a key
 binding, in a macro, as a menu entry or in a plugin.
 
 - Browsing the default key bindings at **Preferences | Key Bindings - Default**.
-  If you know the key binding whose command you want to inspect you can just
+  If you know the key binding whose command you want to inspect, you can just
   search for it using the [search panel][]. This, of course, also works in the
   opposite direction.
 
-[search panel]: /guide/search-and-replace/
+[search panel]: /guide/search-and-replace/single.md
 
 - `sublime.log_commands(True)`
 
-  Running the above in the console will tell Sublime Text to print the command's
+  Running the above in the :console: will tell Sublime Text to print the command's
   name in the console whenever a command is run. You can practically just enter
   this, do whatever is needed to run the command you want to inspect and then
   look at the console. It will also print the passed arguments so you can
   basically get all the information you need from it. When you are done, just
   run the function again with `False` as parameter.
 
-- Inspecting *.sublime-menu* files. If your command is run by a menu item,
-  browse the default menu file at :file:`Packages/Default/Main.sublime-menu`.
+- Inspecting `.sublime-menu` files. If your command is run by a menu item,
+  browse the default menu file at `Packages/Default/Main.sublime-menu`.
   You will find them quick enough once you take a look at it, or see the [menu documentation][].
 
-[menu documentation]: /guide/customization/menus
-<!-- TODO link menu docs when they are done -->
+[menu documentation]: ./menus.md
 
-- Similar to menus you can do exactly the same with *.sublime-command* files.
+- Similar to menus, you can do exactly the same with `.sublime-command` files.
   See [completions][] for some documentation on completion
   files.
 
-[completions]: /guide/extensibility/completions
-[Goto Anything]: /guide/file_management/navigation.html#goto-anything
-[Command Palette]: /reference/command_palette
-[Arbitrary Options for build systems]: /reference/build_systems.html#build-arbitrary-options
-[sublime-package archives]: /guide/extensibility/packages.html#package-types
+[completions]: ./completions.md
+[Goto Anything]: /guide/file_management/navigation.md#goto-anything
+[Command Palette]: /guide/extensibility/command_palette.md
+[sublime-package archives]: /guide/extensibility/packages.md#package-types
+[`Window.set_layout`]: ./python_api.md#window-set-layout

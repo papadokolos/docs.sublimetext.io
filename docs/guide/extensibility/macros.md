@@ -35,7 +35,7 @@ commands to it. Macro files have this format:
    { "command": "insert", "args": {"characters": "\n"} },
 ]
 ```
-See the [Commands](/reference/commands) section for more information on commands.
+See the [Commands](/reference/commands.md) section for more information on commands.
 
 <!-- TODO do we need to escape every kind of quotations marks? -->
 
@@ -53,13 +53,9 @@ Macro files can be bound to key combinations by passing the macro file path to t
 
 ```json
 {
-    "keys":
-    [
-        "super+alt+l"
-    ],
+    "keys": ["super+alt+l"],
     "command": "run_macro_file",
-    "args":
-    {
+    "args": {
         "file": "res://Packages/User/Example.sublime-macro"
     }
 }

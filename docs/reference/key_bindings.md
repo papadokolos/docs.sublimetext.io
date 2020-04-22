@@ -4,6 +4,11 @@ title: Key Bindings
 
 Key bindings map key presses to commands.
 
+::: seealso
+[Official documentation for Key Bindings](https://www.sublimetext.com/docs/3/key_bindings.html)
+:::
+
+
 ## File Format
 
 Key bindings are stored in `.sublime-keymap` files
@@ -19,9 +24,9 @@ will always be applied in all platforms.
 Additionally, each platform
 can optionally have its own keymap:
 
-* `Default (Windows).sublime-keymap`
-* `Default (OSX).sublime-keymap`
-* `Default (Linux).sublime-keymap`
+- `Default (Windows).sublime-keymap`
+- `Default (OSX).sublime-keymap`
+- `Default (Linux).sublime-keymap`
 
 Sublime Text will ignore any `.sublime-keymap` file
 whose name doesn't follow the patterns just described.
@@ -59,6 +64,9 @@ These are all valid elements in a key binding:
   See [Structure of a Context][] below
   for more information.
 
+  <!-- Cause upper text to become a paragraph and fix a spacing bug. -->
+
+
 Here's an example:
 
 ```json
@@ -90,9 +98,11 @@ Here's an example:
   is tested against this value.
 
 `match_all`
-   Requires the test to succeed
-   for all selections.
-   Defaults to `false`.
+: Requires the test to succeed
+  for all selections.
+  Defaults to `false`.
+
+  <!-- Cause upper text to become a paragraph and fix a spacing bug. -->
 
 
 #### Context Keys
@@ -164,7 +174,7 @@ provided by Sublime Text itself.
   if the panel given as `operand`
   is visible.
 
-  &nbsp;
+  <!-- Cause upper text to become a paragraph and fix a spacing bug. -->
 
 
 #### Context Operators
@@ -178,7 +188,90 @@ provided by Sublime Text itself.
 `regex_contains`, `not_regex_contains`
 : Match against a regular expression (partial match).
   
-  &nbsp;
+  <!-- Cause upper text to become a paragraph and fix a spacing bug. -->
+
+
+## Bindable Keys
+
+Keys in key bindings may be specified
+literally by symbol
+or by a name for a special key.
+Symbols cannot be combined with modifiers.
+For example,
+`B` will catch any key sequence inserting a `B` glyph,
+but `ctrl+B` is invalid
+and needs to be written as `ctrl+shift+b` instead.
+
+Here's the list of the names for special keys:
+
+| Keys           |                     |       |
+| -------------- | ------------------- | ----- |
+| `up`           | `keypad0`           | `f1`  |
+| `down`         | `keypad1`           | `f2`  |
+| `right`        | `keypad2`           | `f3`  |
+| `left`         | `keypad3`           | `f4`  |
+| `insert`       | `keypad4`           | `f5`  |
+| `home`         | `keypad5`           | `f6`  |
+| `end`          | `keypad6`           | `f7`  |
+| `pageup`       | `keypad7`           | `f8`  |
+| `pagedown`     | `keypad8`           | `f9`  |
+| `backspace`    | `keypad9`           | `f10` |
+| `delete`       | `keypad_period`     | `f11` |
+| `tab`          | `keypad_divide`     | `f12` |
+| `enter`        | `keypad_multiply`   | `f13` |
+| `pause`        | `keypad_minus`      | `f14` |
+| `escape`       | `keypad_plus`       | `f15` |
+| `space`        | `keypad_enter`      | `f16` |
+| `clear`        |                     | `f17` |
+| `sysreq`       | `browser_back`      | `f18` |
+| `break`        | `browser_forward`   | `f19` |
+| `context_menu` | `browser_refresh`   | `f20` |
+|                | `browser_stop`      | `f21` |
+|                | `browser_search`    | `f22` |
+|                | `browser_favorites` | `f23` |
+|                | `browser_home`      | `f24` |
+
+
+### Modifiers
+
+* `shift`
+* `ctrl` or `control`
+* `alt`
+* `super` (**Windows**: Windows key, **MacOS**: Command Key)
+* `primary` (**Windows**: Control key, **MacOS**: Command Key)
+* `command` (**MacOS only**)
+* `option` (**MacOS only**: same as `alt`)
+
+
+### The Any Character Binding
+
+Adding a binding for `<character>`
+(with the angled brackets and no modifiers)
+causes Sublime Text to bind the given command
+for **all** glyphs provided to it.
+You should thus only use this binding
+with an accompanying context filter.
+
+The specified command will then receive
+an additional `character` argument
+containing the glyph that was captured.
+
+
+### Warning about Bindable Keys
+
+If you're developing a package,
+keep this in mind:
+
+* <kbd>Ctrl+Alt+\<alphanum\></kbd> should never be used in any Windows key bindings.
+* <kbd>Option+\<alphanum\></kbd> should never be used in any OS X key bindings.
+
+In both cases,
+the user's ability
+to insert non-ASCII characters
+would be compromised otherwise.
+
+End-users are free to remap
+any key combination.
 
 
 ## Command Mode
@@ -202,108 +295,6 @@ will be able to define appropriate key bindings
 without interference.
 
 
-## Bindable Keys
-
-Keys in key bindings may be specified
-literally or by name.
-If using a name doesn't work in your case,
-try a literal value.
-
-<!-- TODO: Check the above. -->
-
-Here's the list of all valid names:
-
-* `up`
-* `down`
-* `right`
-* `left`
-* `insert`
-* `home`
-* `end`
-* `pageup`
-* `pagedown`
-* `backspace`
-* `delete`
-* `tab`
-* `enter`
-* `pause`
-* `escape`
-* `space`
-* `keypad0`
-* `keypad1`
-* `keypad2`
-* `keypad3`
-* `keypad4`
-* `keypad5`
-* `keypad6`
-* `keypad7`
-* `keypad8`
-* `keypad9`
-* `keypad_period`
-* `keypad_divide`
-* `keypad_multiply`
-* `keypad_minus`
-* `keypad_plus`
-* `keypad_enter`
-* `clear`
-* `f1`
-* `f2`
-* `f3`
-* `f4`
-* `f5`
-* `f6`
-* `f7`
-* `f8`
-* `f9`
-* `f10`
-* `f11`
-* `f12`
-* `f13`
-* `f14`
-* `f15`
-* `f16`
-* `f17`
-* `f18`
-* `f19`
-* `f20`
-* `sysreq`
-* `break`
-* `context_menu`
-* `browser_back`
-* `browser_forward`
-* `browser_refresh`
-* `browser_stop`
-* `browser_search`
-* `browser_favorites`
-* `browser_home`
-
-
-### Modifiers
-
-* `shift`
-* `ctrl`
-* `alt`
-* `super` (**Windows**: Windows key, **MacOS**: Command Key)
-
-
-
-### Warning about Bindable Keys
-
-If you're developing a package,
-keep this in mind:
-
-* <kbd>Ctrl+Alt+\<alphanum\></kbd> should never be used in any Windows key bindings.
-* <kbd>Option+\<alphanum\></kbd> should never be used in any OS X key bindings.
-
-In both cases,
-the user's ability
-to insert non-ASCII characters
-would be compromised otherwise.
-
-End-users are free to remap
-any key combination.
-
-
 ## Order of Preference for Key Bindings
 
 Key bindings in a keymap file are evaluated
@@ -321,10 +312,9 @@ keymap files of their own.
 The recommended storage location
 for your personal keymap files is `Packages/User`.
 
-See [Merging and Order of Precedence][]
-for more information.
-
-[Merging and Order of Precedence]: ../guide/extensibility/packages.html#merging-and-order-of-precedence
+::: seealso
+[Merging and Order of Precedence](/guide/extensibility/packages.html#merging-and-order-of-precedence)
+:::
 
 
 ## International Keyboards
@@ -339,13 +329,15 @@ other than US English.
 ## Troubleshooting
 
 To enable logging
-related to keymaps, see:
-- [sublime.log_commands(flag)][]
-- [sublime.log_input(flag)][]
+related to keymaps, [see the documentation][api-docs] for:
 
-This may help in
-debugging keymaps.
+- sublime.log_commands(flag)
+- sublime.log_input(flag)
 
+These may help with debugging keymaps.
+When a key chord does not trigger an input log,
+another application or your operating system
+is likely grabbing the key
+before it can reach Sublime Text.
 
-[sublime.log_commands(flag)]: https://www.sublimetext.com/docs/3/api_reference.html
-[sublime.log_input(flag)]: https://www.sublimetext.com/docs/3/api_reference.html
+[api-docs]: https://www.sublimetext.com/docs/3/api_reference.html

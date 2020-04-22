@@ -1,6 +1,6 @@
 const config = {
-    title: "Sublime Text Documentation",
-    description: 'Community Developed Documentation',
+    title: "Sublime Text Community Documentation",
+    description: "Community-drivien Documentation for Sublime Text",
     head: [
         ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }],
         ['meta', { name: 'author', content: 'sublime text community' }],
@@ -30,28 +30,25 @@ const config = {
                 link: '/reference/',
             },
             {
-                text: 'Glossary',
-                link: '/GLOSSARY.md',
-            },
-            {
-                text: 'F.A.Q',
-                link: '/other/question',
-            },
-            {
-                text: 'Offical Docs',
-                link: 'https://www.sublimetext.com/docs/3/',
+                text: 'Other',
+                // ariaLabel: 'Language Menu',
+                items: [
+                    {
+                        text: 'Glossary',
+                        link: '/GLOSSARY.md',
+                    },
+                    {
+                        text: 'F.A.Q',
+                        link: '/other/question.md',
+                    },
+                    {
+                        text: 'Offical Docs',
+                        link: 'https://www.sublimetext.com/docs/3/',
+                    },
+                ],
             },
         ],
         sidebar: {
-            // '/': {
-            //     title: 'Introduction',
-            //     path: '/',
-            //     collapsable: false,
-            //     sidebarDepth: 3,
-            //     children: [
-            //         '',
-            //     ],
-            // },
             '/guide/': [
                 {
                     title: 'Introduction',
@@ -59,7 +56,7 @@ const config = {
                 },
                 {
                     title: 'Installation',
-                    path: 'installation',
+                    path: 'installation.md',
                 },
                 {
                     title: 'Basic Concepts',
@@ -76,8 +73,8 @@ const config = {
                     path: '/guide/search-and-replace/',
                     children: [
                         'search-and-replace/',
-                        'search-and-replace/single',
-                        'search-and-replace/multiple'
+                        'search-and-replace/single.md',
+                        'search-and-replace/multiple.md,'
                     ],
                 },
                 {
@@ -90,8 +87,8 @@ const config = {
                     collapsable: true,
                     children: [
                         'file-management/',
-                        'file-management/projects',
-                        'file-management/navigation'
+                        'file-management/projects.md',
+                        'file-management/navigation.md',
                     ],
                 },
                 {
@@ -100,10 +97,10 @@ const config = {
                     collapsable: true,
                     children: [
                         'customization/',
-                        'customization/settings',
-                        'customization/key_bindings',
-                        'customization/menus',
-                        'customization/color_schemes'
+                        'customization/settings.md',
+                        'customization/key_bindings.md',
+                        'customization/menus.md',
+                        'customization/color_schemes.md',
                     ],
                 },
                 {
@@ -112,14 +109,14 @@ const config = {
                     collapsable: true,
                     children: [
                         'extensibility/',
-                        'extensibility/command_palette',
-                        'extensibility/commands',
-                        'extensibility/completions',
-                        'extensibility/macros',
-                        'extensibility/packages',
-                        'extensibility/plugins',
-                        'extensibility/snippets',
-                        'extensibility/syntaxdefs'
+                        'extensibility/command_palette.md',
+                        'extensibility/commands.md',
+                        'extensibility/completions.md',
+                        'extensibility/macros.md',
+                        'extensibility/packages.md',
+                        'extensibility/plugins.md',
+                        'extensibility/snippets.md',
+                        'extensibility/syntaxdefs.md',
                     ],
                 },
             ],
@@ -128,27 +125,32 @@ const config = {
                     title: 'Reference',
                     path: '/reference/',
                     collapsable: false,
-                    sidebarDepth: 1,
-                    // TODO maybe flatten
                     children: [
-                        '',
-                        'projects',
-                        'syntaxdefs',
-                        'color_schemes',
-                        'build_systems',
-                        'key_bindings',
-                        'menus',
-                        'settings',
-                        'completions',
-                        'symbols',
-                        'comments',
-                        'metadata',
-                        'command_palette',
-                        'plugins',
-                        'api',
-                        'commands',
-                        'keyboard_shortcuts_osx',
-                        'keyboard_shortcuts_win'
+                        ['https://www.sublimetext.com/docs/3/build_systems.html', 'Build Systems'],
+                        ['https://www.sublimetext.com/docs/3/color_schemes.html', 'Color Schemes'],
+                        'color_schemes_legacy.md',
+                        'command_palette.md',
+                        'commands.md',
+                        'comments.md',
+                        'completions.md',
+                        'key_bindings.md',
+                        'menus.md',
+                        'metadata.md',
+                        'plugins.md',
+                        'projects.md',
+                        'python_api.md',
+                        'settings.md',
+                        'symbols.md',
+                        ['https://www.sublimetext.com/docs/3/syntax.html', "Syntax Definitions"],
+                        'syntaxdefs_legacy.md',
+                        {
+                            title: 'Keyboard Shortcuts',
+                            collapsable: false,
+                            children: [
+                                ['keyboard_shortcuts_win.md', "Windows/Linux"],
+                                ['keyboard_shortcuts_osx.md', "OSX"],
+                            ],
+                        },
                     ],
                 },
             ],
