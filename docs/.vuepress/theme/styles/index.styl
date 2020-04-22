@@ -39,6 +39,31 @@ h2 {
     }
 }
 
+#nprogress .bar {
+  background: $accentColor;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px $accentColor, 0 0 5px $accentColor;
+}
+
+#nprogress .spinner-icon {
+    border-top-color: $accentColor;
+    border-left-color: $accentColor;
+}
+
+// @searchbox
+.navbar .search-box input {
+    &:focus {
+        cursor: auto;
+        border-color: $accentColor;
+    }
+}
+
+.search-box .suggestion.focused a {
+  color: $accentColor;
+}
+
 // @parent-theme/components/PageEdit.vue
 .page-edit {
     max-width: $contentWidth;

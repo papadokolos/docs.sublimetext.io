@@ -6,6 +6,18 @@
 	.theme-default-content a code {
 		color: $blueAccentColor;
 	}
+	
+	// @searchbox
+	.navbar .search-box input {
+	    &:focus {
+	        cursor: auto;
+	        border-color: $blueAccentColor;
+	    }
+	}
+
+	.search-box .suggestion.focused a {
+	  color: $blueAccentColor;
+	}
 
 	// @parent-theme/components/AlgoliaSearchBox.vue
 	.algolia-search-wrapper .algolia-autocomplete {
