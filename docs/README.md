@@ -1,29 +1,42 @@
 ---
 home: true
 heroImage: null
-actionText: Documentation
+actionText: Open Guide
 actionLink: guide/
+# TODO add links to reference
 ---
 The Sublime Text Community Documentation 
 is a community effort 
-at documenting the [Sublime Text](https://sublimetext.com/) editor. 
-It was started by [Guillermo López-Anglada](https://github.com/guillermooo) in 2010 
-and later joined by [FichteFoll](https://github.com/FichteFoll) in 2013, 
-receiving countless contributions 
-by other members of the community through its entire lifetime. 
-In 2014, it was backed by a fundraiser and supported 
-by individuals and Sublime HQ Pty Ltd.
+at documenting the [Sublime Text][] text editor
+and accompanying its [official documentation][].
 
-<!-- TODO redo -->
-After the originally hosted version on http://docs.sublimetext.info/ went down 
-and the maintainer of both the repo and the domain could not be contacted anymore, 
-the project was rebooted under its current domain of <https://docs.sublimetext.io/>,
-which is a fork of the original 
-under an older, more permissive license.
+[Sublime Text]: https://sublimetext.com/
+[official documentation]: https://sublimetext.com/docs/3/
 
-::: warning Notice
+::: tip Notice
 This documentation is currently undergoing updates and modifications.
 :::
+
+
+## Layout
+
+The documentation is split into two sections:
+
+1. **[The Guide](/guide/)**.
+
+   Includes basic information on Sublime Text,
+   covers its usage
+   and how it can be customized.
+
+2. **[The Reference](/reference/)**.
+   *(For experienced users.)*
+
+   This is where you can look up
+   (almost) all the details you need to know
+   about how to structure your custom key bindings
+   or how to disable a menu item for your plugin.
+
+<!-- TODO mention FAQ, once filled -->
 
 ## Contributors
 
