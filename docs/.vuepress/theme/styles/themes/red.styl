@@ -72,14 +72,14 @@
 
 	.sidebar {
 		.sidebar-links {
-			.sidebar-heading {
-					&:hover {
-							color: lighten($redAccentColor, 10%);
-						}
-					}
-			.sidebar-heading.clickable.active {
-				color: $redAccentColor;
-				border-left-color: $redAccentColor;
+			.sidebar-heading.clickable {
+				&:hover {
+					color: lighten($redAccentColor, 10%);
+				}
+				&.active {
+					color: $redAccentColor;
+					border-left-color: $redAccentColor;
+				}
 			}
 		}
 	}
